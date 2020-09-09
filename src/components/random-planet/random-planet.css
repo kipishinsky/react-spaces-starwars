@@ -3,6 +3,13 @@
 	padding: 1rem;
 }
 
+.random-planet-spinner {
+	display: flex;
+	padding: 1rem;
+	justify-content: center;
+
+}
+
 .random-planet .planet-image {
 	width: 150px;
 	height: 150px;
