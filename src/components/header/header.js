@@ -2,7 +2,7 @@ import React from 'react'
 
 import './header.css'
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<div className="header d-flex">
 			<h3>
@@ -24,5 +24,3 @@ const Header = () => {
 		</div>
 	)
 }
-
-export default Header
