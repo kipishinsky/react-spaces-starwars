@@ -18,9 +18,8 @@ export class SwapiService {
 		return res.results.map(this._transformPerson)
 	}
 
-	getPerson(id) {
-		debugger
-		const person = this.getResourse(`/people/${id}/`)
+	async getPerson(id) {
+		const person = await this.getResourse(`/people/${id}/`)
 		return this._transformPerson(person)
 	}
 
@@ -31,6 +30,7 @@ export class SwapiService {
 	}
 
 	async getPlanet(id) {
+		debugger
 		const planet = await this.getResourse(`/planets/${id}/`)
 		return this._transformPlanet(planet)
 	}
@@ -46,14 +46,12 @@ export class SwapiService {
 		return this._transformStarship(starship)
 	}
 
-	_extractId(item) {
-
+	_extractId = (item) => {
 		const idRegExp = /\/([0-9]*)\/$/
 		return item.url.match(idRegExp)[1]
 	}
 
 	_transformPlanet = (planet) => {
-
 		return {
 			id: this._extractId(planet),
 			name: planet.name,
@@ -64,7 +62,6 @@ export class SwapiService {
 	}
 
 	_transformStarship = (starship) => {
-
 		return {
 			id: this._extractId(starship),
 			name: starship.name,
