@@ -65,7 +65,7 @@ export class PersonDetails extends Component {
 							<span>{eyeColor}</span>
 						</li>
 					</ul>
-					<ErrorButton />
+					<ErrorButton/>
 				</div>
 			</div>
 		)
