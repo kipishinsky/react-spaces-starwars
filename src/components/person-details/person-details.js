@@ -3,6 +3,7 @@ import './person-details.css'
 
 import {SwapiService} from '../../api/swapi-api'
 import {Spinner} from '../spinner/spinner'
+import {ErrorButton} from '../error-button/error-button'
 
 export class PersonDetails extends Component {
 
@@ -64,6 +65,7 @@ export class PersonDetails extends Component {
 							<span>{eyeColor}</span>
 						</li>
 					</ul>
+					<ErrorButton />
 				</div>
 			</div>
 		)
