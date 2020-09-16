@@ -25,6 +25,10 @@ export class PeoplePage extends Component {
 		this.setState({selectedPerson})
 	}
 
+	renderingItems = ({ name, gender, birthYear }) => {
+		return `${name} ( ${gender}, ${birthYear} ) `
+	}
+
 	render() {
 
 		if (this.state.hasError) {
@@ -36,7 +40,8 @@ export class PeoplePage extends Component {
 				<div className="col-md-6">
 					<ItemList
 						onItemSelected={this.onPersonSelected}
-						getData={this.swapiService.getAllPeople}/>
+						getData={this.swapiService.getAllPeople}
+						renderItem={this.renderingItems}/>
 				</div>
 				<div className="col-md-6">
 					<PersonDetails personId={this.state.selectedPerson}/>
