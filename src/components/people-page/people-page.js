@@ -8,46 +8,63 @@ import {SwapiService} from '../../api/swapi-api'
 
 
 
-export class PeoplePage extends Component {
-
-	swapiService = new SwapiService()
+class ErrorBoundy extends Component {
 
 	state = {
-		selectedPerson: 3,
 		hasError: false
 	}
 
-	componentDidCatch(error, info) { //error сама ошибка, инфо детали этой ошибки
+	componentDidCatch() { //error сама ошибка, инфо детали этой ошибки
 		this.setState({
 			hasError: true
 		})
 	}
 
+	render() {
+		if (this.state.hasError) {
+			return <ErrorIndicator/>
+		}
+		return this.props.children //children один и способов передачи свойств
+	}
+}
+
+
+
+export class PeoplePage extends Component {
+
+	swapiService = new SwapiService()
+
+	state = {
+		selectedPerson: 3
+	}
+
+
 	onPersonSelected = (selectedPerson) => {
 		this.setState({selectedPerson})
 	}
 
-	renderingItems = ({ name, gender, birthYear }) => {
+	renderingItems = ({name, gender, birthYear}) => {
 		return `${name} ( ${gender}, ${birthYear} ) `
 	}
 
 
-
 	render() {
 
-		if (this.state.hasError) {
-			return <ErrorIndicator/>
-		}
-
 		const itemList = <ItemList
-				onItemSelected={this.onPersonSelected}
-				getData={this.swapiService.getAllPeople}
-				renderItem={this.renderingItems}/>
+			onItemSelected={this.onPersonSelected}
+			getData={this.swapiService.getAllPeople}
+			renderItem={this.renderingItems}/>
 
-		const personList = <PersonDetails personId={this.state.selectedPerson}/>
+
+			// передача свойств через тело компоненты, а не через параметры
+		const personList = <ErrorBoundy>
+			<PersonDetails personId={this.state.selectedPerson}/>
+		</ErrorBoundy>
 
 		return (
-			<Row left={itemList} right={personList} />
+			<ErrorBoundy>
+				<Row left={itemList} right={personList}/>
+			</ErrorBoundy>
 		)
 	}
 }
