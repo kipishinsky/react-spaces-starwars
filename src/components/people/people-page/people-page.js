@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import './people-page.css'
 
-import {PersonDetails} from '../person-details/person-details'
-import {Row} from '../../item-component/row-item/row-item'
+import {ItemDetails} from '../../item-component/item-details/item-details'
+import {Row} from '../../item-component/item-row/row-item'
 import {SwapiService} from '../../../api/swapi-api'
 import {ItemList} from '../../item-component/item-list/item-list'
-import {ErrorBoundy} from '../../error-directory/error-boundy/error-boundy'
+import {ErrorBoundry} from '../../error-directory/error-boundry/error-boundry'
 
 
 export class PeoplePage extends Component {
@@ -15,7 +15,6 @@ export class PeoplePage extends Component {
 	state = {
 		selectedPerson: 3
 	}
-
 
 	onPersonSelected = (selectedPerson) => {
 		this.setState({selectedPerson})
@@ -35,14 +34,14 @@ export class PeoplePage extends Component {
 
 
 			// передача свойств через тело компоненты, а не через параметры
-		const personList = <ErrorBoundy>
-			<PersonDetails personId={this.state.selectedPerson}/>
-		</ErrorBoundy>
+		const personList = <ErrorBoundry>
+			<ItemDetails personId={this.state.selectedPerson}/>
+		</ErrorBoundry>
 
 		return (
-			<ErrorBoundy>
+			<ErrorBoundry>
 				<Row left={itemList} right={personList}/>
-			</ErrorBoundy>
+			</ErrorBoundry>
 		)
 	}
 }

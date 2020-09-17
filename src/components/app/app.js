@@ -6,8 +6,11 @@ import {RandomPlanet} from '../planet/random-planet/random-planet'
 import {ErrorIndicator} from '../error-directory/error-indication/error-indicator'
 import {PeoplePage} from '../people/people-page/people-page'
 import {ItemList} from '../item-component/item-list/item-list'
-import {PersonDetails} from '../people/person-details/person-details'
+import {ItemDetails} from '../item-component/item-details/item-details'
 import {SwapiService} from '../../api/swapi-api'
+import {ErrorBoundry} from '../error-directory/error-boundry/error-boundry'
+import {Row} from '../item-component/item-row/row-item'
+import {Record} from '../item-component/item-record/record'
 
 export class App extends Component {
 
@@ -19,7 +22,7 @@ export class App extends Component {
 	}
 
 	toggleRandomPlanet = () => {
-		this.setState((state) => {
+		this.setState(state => {
 			return {
 				showRandomPlanet: !state.showRandomPlanet
 			}
@@ -33,18 +36,44 @@ export class App extends Component {
 
 	render() {
 
-		if ( this.state.hasError) {
-			return <ErrorIndicator />
-		}
+		if (this.state.hasError) return <ErrorIndicator/>
 
-		const planet = this.state.showRandomPlanet ?
-			<RandomPlanet/> :
-			null
+		const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null
+
+		const {getPerson, getStarShips, getPersonImage, getStarShipImage} = this.swapiService
+
+		const personDetails = (
+			<ItemDetails
+				itemId={4}
+				getData={getPerson}
+				getImageUrl={getPersonImage}>
+
+				<Record field={'gender'} label={'Gender'}/>
+				<Record field={'eyeColor'} label={'Eye Color'}/>
+
+			</ItemDetails>
+		)
+
+		const starShipDetails = (
+			<ItemDetails
+				itemId={9}
+				getData={getStarShips}
+				getImageUrl={getStarShipImage}>
+
+
+
+			</ItemDetails>
+		)
 
 		return (
-			<div className="stardb-app">
-				<Header/>
-				{planet}
+			<ErrorBoundry>
+				<div className="stardb-app">
+					<Header/>
+
+					<Row left={personDetails} right={starShipDetails}/>
+
+
+					{/*{planet}
 
 				<button
 					className="toggle-planet btn btn-warning btn-lg"
@@ -82,10 +111,11 @@ export class App extends Component {
 						<PersonDetails
 							personId={this.state.selectedPerson}/>
 					</div>
+				</div>*/}
+
+
 				</div>
-
-
-			</div>
+			</ErrorBoundry>
 		)
 	}
 }
