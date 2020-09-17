@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-import {SwapiService} from '../../api/swapi-api'
-import {ErrorIndicator} from '../error-indication/error-indicator'
-import {Spinner} from '../spinner/spinner'
+import {SwapiService} from '../../../api/swapi-api'
+import {ErrorIndicator} from '../../error-directory/error-indication/error-indicator'
+import {Spinner} from '../../load-component/spinner/spinner'
 
 import './random-planet.css'
 

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import './person-details.css'
 
-import {SwapiService} from '../../api/swapi-api'
-import {Spinner} from '../spinner/spinner'
-import {ErrorButton} from '../error-button/error-button'
+import {Spinner} from '../../load-component/spinner/spinner'
+import {ErrorButton} from '../../error-directory/error-button/error-button'
+import {SwapiService} from '../../../api/swapi-api'
+
 
 export class PersonDetails extends Component {
 

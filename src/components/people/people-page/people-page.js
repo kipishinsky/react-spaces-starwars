@@ -1,33 +1,11 @@
 import React, {Component} from 'react'
 import './people-page.css'
 
-import {ErrorIndicator} from '../error-indication/error-indicator'
-import {ItemList} from '../item-list/item-list'
 import {PersonDetails} from '../person-details/person-details'
-import {SwapiService} from '../../api/swapi-api'
-
-
-
-class ErrorBoundy extends Component {
-
-	state = {
-		hasError: false
-	}
-
-	componentDidCatch() { //error сама ошибка, инфо детали этой ошибки
-		this.setState({
-			hasError: true
-		})
-	}
-
-	render() {
-		if (this.state.hasError) {
-			return <ErrorIndicator/>
-		}
-		return this.props.children //children один и способов передачи свойств
-	}
-}
-
+import {Row} from '../../item-component/row-item/row-item'
+import {SwapiService} from '../../../api/swapi-api'
+import {ItemList} from '../../item-component/item-list/item-list'
+import {ErrorBoundy} from '../../error-directory/error-boundy/error-boundy'
 
 
 export class PeoplePage extends Component {
@@ -69,16 +47,3 @@ export class PeoplePage extends Component {
 	}
 }
 
-const Row = ({left, right}) => {
-
-	return (
-		<div className="row mb2">
-			<div className="col-md-6">
-				{left}
-			</div>
-			<div className="col-md-6">
-				{right}
-			</div>
-		</div>
-	)
-}

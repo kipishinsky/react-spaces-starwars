@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 import './app.css'
 
 import {Header} from '../header/header'
-import {RandomPlanet} from '../random-planet/random-planet'
-import {ErrorIndicator} from '../error-indication/error-indicator'
-import {PeoplePage} from '../people-page/people-page'
-import {ItemList} from '../item-list/item-list'
-import {PersonDetails} from '../person-details/person-details'
+import {RandomPlanet} from '../planet/random-planet/random-planet'
+import {ErrorIndicator} from '../error-directory/error-indication/error-indicator'
+import {PeoplePage} from '../people/people-page/people-page'
+import {ItemList} from '../item-component/item-list/item-list'
+import {PersonDetails} from '../people/person-details/person-details'
 import {SwapiService} from '../../api/swapi-api'
 
 export class App extends Component {

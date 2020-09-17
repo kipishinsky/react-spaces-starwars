@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Spinner} from '../spinner/spinner'
+import {Spinner} from '../../load-component/spinner/spinner'
 
 import './item-list.css'
 
