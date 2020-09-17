@@ -3,9 +3,6 @@ import './item-details.css'
 
 import {Spinner} from '../../load-component/spinner/spinner'
 import {ErrorButton} from '../../error-directory/error-button/error-button'
-import {SwapiService} from '../../../api/swapi-api'
-import {Record} from '../item-record/record'
-
 
 export class ItemDetails extends Component {
 
@@ -30,7 +27,6 @@ export class ItemDetails extends Component {
 		if (!itemId) {
 			return
 		}
-		debugger
 		getData(itemId).then((item) => {
 			this.setState({
 				item,
@@ -48,7 +44,9 @@ export class ItemDetails extends Component {
 		}
 
 		const {id, name, gender, birthYear, eyeColor} = item
-debugger
+
+		//debugger
+
 		return (
 			<div className="person-details card">
 				<img className="person-image"
@@ -58,10 +56,8 @@ debugger
 					<h4>{name}</h4>
 					<ul className="list-group list-group-flush">
 						{
-							React.Children.map( this.props.children, (child, idx) => {
-								return <li>
-									{idx}
-								</li>
+							React.Children.map(this.props.children, (child) => {
+								return React.cloneElement(child, {item})
 							})
 						}
 					</ul>

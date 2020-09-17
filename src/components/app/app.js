@@ -4,8 +4,6 @@ import './app.css'
 import {Header} from '../header/header'
 import {RandomPlanet} from '../planet/random-planet/random-planet'
 import {ErrorIndicator} from '../error-directory/error-indication/error-indicator'
-import {PeoplePage} from '../people/people-page/people-page'
-import {ItemList} from '../item-component/item-list/item-list'
 import {ItemDetails} from '../item-component/item-details/item-details'
 import {SwapiService} from '../../api/swapi-api'
 import {ErrorBoundry} from '../error-directory/error-boundry/error-boundry'
@@ -48,8 +46,9 @@ export class App extends Component {
 				getData={getPerson}
 				getImageUrl={getPersonImage}>
 
-				<Record field={'gender'} label={'Gender'}/>
-				<Record field={'eyeColor'} label={'Eye Color'}/>
+
+				<Record field={'gender'} label={'Gender:'}/>
+				<Record field={'eyeColor'} label={'Eye Color:'}/>
 
 			</ItemDetails>
 		)
@@ -59,8 +58,6 @@ export class App extends Component {
 				itemId={9}
 				getData={getStarShips}
 				getImageUrl={getStarShipImage}>
-
-
 
 			</ItemDetails>
 		)

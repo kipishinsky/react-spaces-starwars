@@ -10,7 +10,6 @@ export class SwapiService {
 			throw new Error(`Could not fetch ${url}` +
 				`, received  ${res.status}`)
 		}
-
 		return await res.json()
 	}
 
@@ -71,7 +70,8 @@ export class SwapiService {
 			name: planet.name,
 			population: planet.population,
 			rotationPeriod: planet.rotation_period,
-			diameter: planet.diameter
+			diameter: planet.diameter,
+			climate: planet.climate
 		}
 	}
 
@@ -81,11 +81,11 @@ export class SwapiService {
 			name: starship.name,
 			model: starship.model,
 			manufacturer: starship.manufacturer,
-			costInCredits: starship.costInCredits,
+			costInCredits: starship.cost_in_credits,
 			length: starship.length,
 			crew:  starship.crew,
 			passengers: starship.passengers,
-			cargoCapacity: starship.cargoCapacity
+			cargoCapacity: starship.cargo_capacity
 		}
 	}
 
@@ -95,7 +95,7 @@ export class SwapiService {
 			name: person.name,
 			gender: person.gender,
 			birthYear: person.birth_year,
-			eyeColor: person.eyeColor
+			eyeColor: person.eye_color
 		}
 	}
 
